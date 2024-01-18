@@ -1,0 +1,142 @@
+<ts:token xmlns:ethereum="urn:ethereum:constantinople" xmlns:ts="http://tokenscript.org/2022/09/tokenscript" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="EDNS" xsi:schemaLocation="http://tokenscript.org/2022/09/tokenscript https://www.tokenscript.org/schemas/2022-09/tokenscript.xsd">
+	<ts:label>
+		<ts:plurals xml:lang="en">
+			<ts:string quantity="one">EDNS Token</ts:string>
+			<ts:string quantity="other">EDNS Tokens</ts:string>
+		</ts:plurals>
+	</ts:label>
+	<ts:meta>
+		<ts:description xml:lang="en">EDNS in ERC-5169</ts:description>
+		<ts:aboutUrl xml:lang="en">https://polygonscan.com/token/0x53a0018f919bde9c254bda697966c5f448ffddcb?a=0x14A1A496fABc43bFAfC358005dE336a7B5222b20</ts:aboutUrl>
+		<ts:iconUrl xml:lang="en">https://polygonscan.com/token/images/ednsv2_32.png</ts:iconUrl>
+	</ts:meta>
+	<ts:contract interface="erc721" name="Token">
+		<ts:address network="137">0x53a0018f919bde9C254bda697966C5f448ffDDcB</ts:address>
+	</ts:contract>
+	<ts:origins>
+		
+		<ts:ethereum contract="Token"/>
+	</ts:origins>
+	<ts:cards>
+		<ts:viewContent xmlns="http://www.w3.org/1999/xhtml" name="common">
+			
+		<style>
+					/* <![CDATA[ */
+					
+* {
+	font-family: "Rubik", sans-serif;
+	box-sizing: border-box;
+}
+
+body {
+	color: #0B0B0B;
+}
+
+h1 {
+	font-size: 22px;
+}
+
+h2 {
+	font-size: 20px;
+}
+
+h3 {
+	font-size: 18px;
+}
+
+h5 {
+	font-size: 16px;
+	margin-bottom: 12px;
+}
+
+p.light {
+	color: #545454;
+}
+
+.loader-modal {
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+}
+
+					/* ]]> */
+				</style></ts:viewContent>
+
+		<ts:card name="Info" type="token">
+			<ts:label>
+				<ts:string xml:lang="en">Info</ts:string>
+			</ts:label>
+			<ts:view xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+				<ts:viewContent name="common"/>
+				
+			<script type="text/javascript">//&lt;![CDATA[
+
+	class Token {
+		constructor(tokenInstance) {
+			this.props = tokenInstance
+		}
+
+		render() {
+			return `
+				&lt;div style="text-align: center;"&gt;
+					&lt;h3&gt;Welcome to TokenScript&lt;/h3&gt;
+					&lt;p&gt;When a card loads in TokenScript, it gets access to the token context data through TokenScript engine&lt;/p&gt;
+				&lt;/div&gt;
+				&lt;pre&gt;${JSON.stringify(this.props, null, 2)}&lt;/pre&gt;
+			`;
+		}
+	}
+
+	web3.tokens.dataChanged = (oldTokens, updatedTokens, cardId) =&gt; {
+		const currentTokenInstance = updatedTokens.currentInstance;
+		document.getElementById(cardId).innerHTML = new Token(currentTokenInstance).render();
+	};
+
+
+//]]&gt;</script>
+</ts:view>
+		</ts:card>
+
+		<ts:card name="Mint" type="action">
+			<ts:label>
+				<ts:string xml:lang="en">Mint</ts:string>
+			</ts:label>
+			<ts:transaction>
+				<ethereum:transaction contract="Token" function="safeMint">
+					<ts:data>
+					</ts:data>
+				</ethereum:transaction>
+			</ts:transaction>
+			<ts:view xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+				<ts:viewContent name="common"/>
+				
+			<script type="text/javascript">//&lt;![CDATA[
+
+	class Token {
+		constructor(tokenInstance) {
+			this.props = tokenInstance
+		}
+
+		render() {
+			return `
+        		&lt;h3&gt;Mint EDNS ...&lt;/h3&gt;
+        		&lt;p&gt;Actions allow you to invoke a smart contract transaction or invoke a Javascript function within the view.&lt;/p&gt;
+			`;
+		}
+	}
+
+	web3.tokens.dataChanged = (oldTokens, updatedTokens, cardId) =&gt; {
+		const currentTokenInstance = updatedTokens.currentInstance;
+		document.getElementById(cardId).innerHTML = new Token(currentTokenInstance).render();
+	};
+
+
+//]]&gt;</script>
+</ts:view>
+		</ts:card>
+
+	</ts:cards>
+
+</ts:token>

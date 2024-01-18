@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "@tokenscript/cli": "^1.1.2"
+  }
+}
